@@ -1,0 +1,36 @@
+var confuciusToken = "1680497917:AAFR4YjRek_s5cHJou8ZvZeL1A-SV2YxwPE";
+var confuciusUrl = "https://api.telegram.org/bot" + confuciusToken;
+
+var chatId = 242141394;
+var ssId = "1m9J0FYZtODqZkeSm_5zAvVQC3Lgj3s5FaFN_AzU8hFA";
+var idioms = SpreadsheetApp.openById(ssId).getSheetByName('Idioms');
+var randomiserSheet = SpreadsheetApp.openById(ssId).getSheetByName('Randomiser');
+
+function confuciusText(text) {
+  var response = UrlFetchApp.fetch(confuciusUrl + "/sendMessage?chat_id=" + chatId + "&text=" + text);
+}
+
+function confuciusSay() {
+  timeNow = new Date;
+  var hourNow = parseInt(timeNow.toString()[16] + timeNow.toString()[17]);
+  
+  if ((hourNow < 23) & (hourNow > 7)) {
+    var randomiser = SpreadsheetApp.openById(ssId).getSheetByName('Randomiser');
+    var idioms = SpreadsheetApp.openById(ssId).getSheetByName('Idioms');
+    randomiser.getRange("E12").setValue(idioms.getRange("A1").getDataRegion().getNumRows());
+    var randomc = randomiser.getRange("E14").getValues()[0][0];
+    var rowc = idioms.getRange(randomc,1,1,9).getValues()[0];
+    
+    wordc = rowc[0];
+    try{pinyin = rowc[2];} catch(e) {pinyin = '';}
+    try{usage = rowc[4];} catch(e) {usage = '';}
+    try{sentence = rowc[5];sentencePinyin = rowc[6];sentenceMeaning = rowc[7];} catch(e) {sentence = '';sentencePinyin = '';sentenceMeaning = '';}
+    if (!sentence == "") {
+      sentence = '%0A' + sentence;
+      sentencePinyin = '%0A' + sentencePinyin;
+      sentenceMeaning = '%0A' + sentenceMeaning;
+    }
+    textc = "Confucius say: " + wordc + "(" + pinyin + ")" + '%0AWhich means: ' + usage;
+    try{confuciusText(textc)} catch(e) {confuciusText(wordc + " cannot")};
+  }
+}
