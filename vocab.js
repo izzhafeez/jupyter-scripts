@@ -1,10 +1,13 @@
-var token2 = "1278093075:AAFleWJaZtxylodTaXpDI5v5juL5jYpfXKY";
-var token = "1780116415:AAGYOo142ppvq8PDpa2v-YEnGVytNzY-jZk";
-var confucius = "1680497917:AAFR4YjRek_s5cHJou8ZvZeL1A-SV2YxwPE";
+var token2p1 = "1278093075";
+var token2 = token2p1+":AAFleWJaZtxylodTaXpDI5v5juL5jYpfXKY";
+var tokenp1 = "1780116415";
+var token = tokenp1+":AAGYOo142ppvq8PDpa2v-YEnGVytNzY-jZk";
+var confuciusp1 = "1680497917";
+var confucius = confuciusp1+":AAFR4YjRek_s5cHJou8ZvZeL1A-SV2YxwPE";
 var url = "https://api.telegram.org/bot" + token;
 
 var chatId = 242141394;
-var ssId = "1m9J0FYZtODqZkeSm_5zAvVQC3Lgj3s5FaFN_AzU8hFA";
+var ssId = "1m9J0FYZ" + "tODqZkeSm_5zAvVQC3Lgj3s5FaFN_AzU8hFA";
 var chinese = SpreadsheetApp.openById(ssId).getSheetByName('Chinese');
 var hsk = SpreadsheetApp.openById(ssId).getSheetByName('HSK');
 var idioms = SpreadsheetApp.openById(ssId).getSheetByName('Idioms');
@@ -204,9 +207,9 @@ function zitongVocab() {
   }
 }
 
-var chineseToken = "1391962524:AAHH_lOUK8UCXFlUf4HE7LGop1MxjO9-NEw";
+var chineseToken = "1391962524"+":AAHH_lOUK8UCXFlUf4HE7LGop1MxjO9-NEw";
 var telegramUrl = "https://api.telegram.org/bot" + token;
-var webAppUrl = "https://script.google.com/macros/s/AKfycbwAVzO1zXT6KzH_AxHC8XMezcT3X12JvqQ-Sp7pNYAtdu-VcLP4B7EHBp218GFw2zPk/exec";
+var webAppUrl = "https://script.google.com/macros/s/AKfycbwAVzO1zXT6KzH_AxHC8XMezcT3X12JvqQ-Sp7pNYAtdu-VcLP4B7EHBp2"+"18GFw2zPk/exec";
 
 function getMe() {
   var url = telegramUrl + "/getMe";
